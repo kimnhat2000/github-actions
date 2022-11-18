@@ -18,7 +18,7 @@ async function setup() {
 
 setup().then(
   function(value) {console.log("1password CLI downloaded")},
-  function(error) {console.log("something is wrong")}
+  function(error) {console.log(error)}
 )
 
 module.exports = setup
