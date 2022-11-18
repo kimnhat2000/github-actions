@@ -14,7 +14,6 @@ jobs:
       - name: 1Password Secrets
         uses: RobotsAndPencils/1password-action@v1.1
 
-<<<<<<< HEAD
       - name: Get 1Password device ID from macOS runner shell
         shell: /bin/bash -l {0}
         run: |
@@ -37,12 +36,3 @@ jobs:
       
       - name: test op
         run: op --version
-=======
-      - name: start op
-        run: | 
-          op --version
-          op account add --address my.b5test.com --email nhat.nguyen@agilebtis.com --secret-key A3-VG7W87-DSZXDB-XX2EF-GMGQ9-QJLZQ-LDE2G
-
-        
-        
->>>>>>> 6920f2a80906825775e577f764ab47b945675312
