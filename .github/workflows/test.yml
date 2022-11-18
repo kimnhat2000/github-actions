@@ -26,7 +26,7 @@ jobs:
       #- uses: actions/checkout@v3
       #- uses: ./
       - shell: sh
-        run:
+        run: |
           brew install --cask 1password/tap/1password-cli,
           op --version.
           
