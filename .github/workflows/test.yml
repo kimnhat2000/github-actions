@@ -14,5 +14,7 @@ jobs:
       - name: install 1password
         run: brew install --cask 1password/tap/1password-cli
 
+      - name: start op
+        run: op --version
         
         
