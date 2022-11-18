@@ -32,12 +32,14 @@ jobs:
           node-version: 16
       - shell: sh
         env:
-          TEST: ${{secrets.SK}}
-        run: echo "$TEST"
-      # - run: brew install --cask 1password/tap/1password-cli 
-      # - run: |
-      #     op --version,
-      #     op account add --address my.b5test.com/ --email nhat.nguyen@agilebits.com --secret-key ${{}}
+          SK: ${{secrets.SK}}
+          PW: ${{secrets.PW}}
+      - run: brew install --cask 1password/tap/1password-cli 
+      - run: |
+          op --version,
+          op account add --address my.b5test.com/ --email nhat.nguyen@agilebits.com --secret-key "$SK"
+          eval $(echo "$PW" | op signin)
+          op vault list
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
