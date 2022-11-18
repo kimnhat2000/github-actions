@@ -27,7 +27,13 @@ jobs:
       #- uses: ./
 
       - uses: actions/checkout@v3
-        
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - shell: sh
+        env:
+          TEST: ${{secrets.SK}}
+        run: echo "$TEST"
       # - run: brew install --cask 1password/tap/1password-cli 
       # - run: |
       #     op --version,
@@ -42,7 +48,6 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          run: echo "my secret key ${{secrets.SECRET_KEY}}"
           
 
     
