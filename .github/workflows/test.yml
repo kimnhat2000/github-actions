@@ -10,9 +10,6 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - name: 1Password Secrets
-        uses: RobotsAndPencils/1password-action@v1.1
 
       - name: Get 1Password device ID from macOS runner shell
         shell: /bin/bash -l {0}
