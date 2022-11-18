@@ -30,8 +30,14 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: brew install --cask 1password/tap/1password-cli 
-      - run: op --version
+      - shell: sh
+        env:
+          TEST: "this is a secret"
+        run: echo "$TEST"
+      # - run: brew install --cask 1password/tap/1password-cli 
+      # - run: |
+      #     op --version,
+      #     op account add --address my.b5test.com/ --email nhat.nguyen@agilebits.com --secret-key ${{}}
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
