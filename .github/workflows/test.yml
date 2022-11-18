@@ -1,10 +1,8 @@
-# This is a basic workflow to help you get started with Actions
-
 name: 1Password
 on:
   push:
-    branches: ["main"]
-
+    branches: [ "main" ]
+    
 jobs:
   build:
     runs-on: macos-latest
@@ -15,25 +13,6 @@ jobs:
         run: brew install --cask 1password/tap/1password-cli
 
       - name: start op
-        run: op --version
-
-      - uses: actions/checkout@v3
-      - name: 1Password Secrets
-        uses: RobotsAndPencils/1password-action@v1.1
-
-      - name: Import Secrets
-        uses: RobotsAndPencils/1password-action@v1
-        id: secrets
-        with:
-          device-id: ${{ secrets.OP_DEVICE_ID }}
-          sign-in-address: ${{ secrets.OP_SIGN_IN_ADDRESS }}
-          email-address: ${{ secrets.OP_EMAIL_ADDRESS }}
-          secret-key: ${{ secrets.OP_SECRET_KEY }}
-          master-password: ${{ secrets.OP_MASTER_PASSWORD }}
-          items: |
-            Client A > App Store Connect
-            Client A > Certificate | p12
-            Client A > Provisioning Profile
-      
-      - name: test op
-        run: op --version
+        run: | 
+          op --version
+          op account add --address my.b5test.com --email nhat.nguyen@agilebits.com --secret-key A3-VG7W87-DSZXDB-XX2EF-GMGQ9-QJLZQ-LDE2G
