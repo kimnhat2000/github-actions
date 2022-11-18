@@ -10,14 +10,10 @@ jobs:
     runs-on: macos-latest
 
     steps:
-
-      - name: Get 1Password device ID from macOS runner shell
-        shell: /bin/bash -l {0}
-        run: |
-          head -c 16 /dev/urandom | base32 | tr -d = | tr '[:upper:]' '[:lower:]'
-          echo "OP_DEVICE=$OP_DEVICE" >> $GITHUB_ENV
-          echo "::add-mask::$OP_DEVICE"
-
+      - uses: actions/checkout@v3
+      - name: 1Password Secrets
+        uses: RobotsAndPencils/1password-action@v1.1
+        
       - name: Import Secrets
         uses: RobotsAndPencils/1password-action@v1
         id: secrets
