@@ -3,18 +3,36 @@
 name: 1Password
 on:
   push:
-    branches: [ "main" ]
-    
+    branches: ["main"]
+
 jobs:
   build:
     runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3
-      - name: install 1password
-        run: brew install --cask 1password/tap/1password-cli
+      - name: 1Password Secrets
+        uses: RobotsAndPencils/1password-action@v1.1
 
-      - name: start op
+      - name: Get 1Password device ID from macOS runner shell
+        shell: /bin/bash -l {0}
+        run: |
+          echo "OP_DEVICE=$OP_DEVICE" >> $GITHUB_ENV
+          echo "::add-mask::$OP_DEVICE"
+
+      - name: Import Secrets
+        uses: RobotsAndPencils/1password-action@v1
+        id: secrets
+        with:
+          device-id: ${{ secrets.OP_DEVICE_ID }}
+          sign-in-address: ${{ secrets.OP_SIGN_IN_ADDRESS }}
+          email-address: ${{ secrets.OP_EMAIL_ADDRESS }}
+          secret-key: ${{ secrets.OP_SECRET_KEY }}
+          master-password: ${{ secrets.OP_MASTER_PASSWORD }}
+          items: |
+            Client A > App Store Connect
+            Client A > Certificate | p12
+            Client A > Provisioning Profile
+      
+      - name: test op
         run: op --version
-        
-        
