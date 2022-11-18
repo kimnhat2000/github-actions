@@ -15,4 +15,4 @@ jobs:
       - name: start op
         run: | 
           op --version
-          op account add --address my.b5test.com --email nhat.nguyen@agilebits.com --secret-key A3-VG7W87-DSZXDB-XX2EF-GMGQ9-QJLZQ-LDE2G
+          op account add --address my.1password.com/ --email emailforwork111222@gmail.com --secret-key A3-7QB89A-RQY3J9-8N4Y7-Y7PC7-V43MK-B5C7T
