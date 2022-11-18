@@ -25,11 +25,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       #- uses: actions/checkout@v3
       #- uses: ./
-
-      - uses: actions/checkout@v3
-
-        with:
-          node-version: 16
       - shell: sh
         run: brew install --cask 1password/tap/1password-cli 
         
