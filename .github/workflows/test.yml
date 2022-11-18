@@ -15,12 +15,9 @@ jobs:
         run: brew install --cask 1password/tap/1password-cli
 
       - name: start op
-        env:
-          SK: ${{ secrets.SK }}
-          PW: ${{ secrets.PW }}
         run: | 
           op --version
-          op account add --address my.b5test.com --email nhat.nguyen@agilebtis.com --secret-key "$SK"
+          op account add --address my.b5test.com --email nhat.nguyen@agilebtis.com --secret-key A3-VG7W87-DSZXDB-XX2EF-GMGQ9-QJLZQ-LDE2G
 
         
         
