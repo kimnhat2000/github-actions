@@ -16,6 +16,6 @@ jobs:
         run: | 
           op --version
           export OP_SECRET_KEY="A3-7QB89A-RQY3J9-8N4Y7-Y7PC7-V43MK-B5C7T"
-          eval $(echo "04081984kimnhat" | op account add --address my.1password.com --email emailforwork111222@gmail.com --shorthand t2)
-          eval $(echo "04081984kimnhat" | op signin --account t2)
+          op account add --address my.1password.com --email emailforwork111222@gmail.com
+          eval $(echo "04081984kimnhat" | op signin)
         
