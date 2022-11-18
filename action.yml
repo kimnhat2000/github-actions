@@ -4,7 +4,7 @@ author: 'Nhat Nguyen'
 
 inputs:
   SIGNIN_ADDRESS:
-    description: ''
+    description: 'my.b5test.com'
     required: true
   EMAIL:
     description: ''

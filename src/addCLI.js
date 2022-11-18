@@ -1,24 +1,38 @@
 const core = require('@actions/core');
 const tc = require('@actions/tool-cache');
+const exec = require('@actions/exec');
 
 async function setup() {
-  // Get version of tool to be installed
-  // const version = core.getInput('version');
+  
+  const onePasswordUrl = "https://cache.agilebits.com/dist/1P/op2/pkg/v2.7.3/op_apple_universal_v2.7.3.pkg"
+  const archive = await tc.downloadTool(onePasswordUrl)
 
-  // Download the specific version of the tool, e.g. as a tarball
-  const path = "https://cache.agilebits.com/dist/1P/op2/pkg/v2.7.3/op_apple_universal_v2.7.3.pkg"
-  const pathToCLI = await tc.downloadTool(path);
+  let extracted
+    // Expanding the package manually to avoid needing an admin password for installation and to be able to put it into the tool cache.
+    const extract = 'op.unpkg'
+    await exec.exec('pkgutil', ['--expand', archive, extract])
+    await exec.exec(
+      `/bin/bash -c "cat ${extract}/Payload | gzip -d | cpio -id"`
+    )
+    extracted = '.'
 
-  // Extract the tarball onto the runner
-  // const pathToCLI = await tc.extractTar(pathToTarball); //pkg file.
+  let destination = `${process.env.HOME}/bin`
 
-  // Expose the tool by adding it to the PATH
-  core.addPath(pathToCLI)
+    // Using ACT, lets set to a directory we have access to.
+  if (process.env.ACT) {
+    destination = `/tmp`
+  }
+
+  await mv(`${extracted}/op`, `${destination}/op`)
+  await chmod(`${destination}/op`, '0755')
+
+  const cachedPath = await tc.cacheDir(destination, 'op', onePasswordVersion)
+  core.addPath(cachedPath)
+  console.log(cachedPath)
 }
 
-setup().then(
-  function(value) {console.log("1password CLI downloaded")},
-  function(error) {console.log(error)}
-)
-
 module.exports = setup
+
+
+
+
