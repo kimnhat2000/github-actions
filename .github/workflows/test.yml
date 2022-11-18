@@ -11,9 +11,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: install 1password
+        run: brew install --cask 1password/tap/1password-cli
+
+      - name: start op
+        run: op --version
+
+      - uses: actions/checkout@v3
       - name: 1Password Secrets
         uses: RobotsAndPencils/1password-action@v1.1
-        
+
       - name: Import Secrets
         uses: RobotsAndPencils/1password-action@v1
         id: secrets
