@@ -12,6 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: install 1password
-        run: brew install --cask 1password/tap/1password-cli
+        run: brew install --cask 1password/tap/1password-cli,
+
         
         
