@@ -1,0 +1,22 @@
+name: 'op-gh-actions'
+description: 'signin and use 1Password CLI'
+author: 'Nhat Nguyen'
+
+inputs:
+  SIGNIN_ADDRESS:
+    description: ''
+    required: true
+  EMAIL:
+    description: ''
+    required: true
+  SECRET_KEY:
+    description : ''
+    required: true
+  PASS_WORD:
+    description : ''
+    required: true
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+    

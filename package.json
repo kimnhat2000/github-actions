@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@vercel/ncc": "^0.34.0"
+  },
+  "name": "github-actions",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build src/index.js -o dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimnhat2000/github-actions.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kimnhat2000/github-actions/issues"
+  },
+  "homepage": "https://github.com/kimnhat2000/github-actions#readme"
+}
