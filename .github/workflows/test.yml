@@ -9,13 +9,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: install 1password
-        run: brew install --cask 1password/tap/1password-cli
-
       - name: start op
         run: | 
-          op --version
-          export OP_SECRET_KEY="A3-7QB89A-RQY3J9-8N4Y7-Y7PC7-V43MK-B5C7T"
-          eval $(echo "04081984kimnhat" | op account add --address my.1password.com --email emailforwork111222@gmail.com)
+          run: brew install --cask 1password/tap/1password-cli
+          eval $(echo "04081984kimnhat" | op account add --address my.1password.com --email emailforwork111222@gmail.com --secret-key A3-7QB89A-RQY3J9-8N4Y7-Y7PC7-V43MK-B5C7T)
           eval $(echo "04081984kimnhat" | op signin)
         
