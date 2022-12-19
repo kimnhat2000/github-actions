@@ -12,6 +12,7 @@ jobs:
       EMAIL: ${{secrets.EMAIL}}
       SECRET_KEY: ${{secrets.SECRET_KEY}}
       PASSWORD: ${{secrets.PASSWORD}}
+      ADDRESS: my.b5test.com
 
     steps:
       - uses: actions/checkout@v3
@@ -23,6 +24,6 @@ jobs:
         
       - name: start op
         run: | 
-          eval $(echo "04081984kimnhat" | op account add --address my.1password.com --email emailforwork111222@gmail.com --secret-key A3-7QB89A-RQY3J9-8N4Y7-Y7PC7-V43MK-B5C7T)
-          eval $(echo "04081984kimnhat" | op signin)
+          eval $(echo "$PASSWORD" | op account add --address $ADDRESS --email $EMAIL --secret-key $SECRET_KEY --signin)
+          op vault list
           
