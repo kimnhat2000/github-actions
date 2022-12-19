@@ -18,8 +18,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: install 1password
         run: |
-          wget https://downloads.1password.com/linux/debian/amd64/stable/1password-cli-amd64-latest.deb
-          sudo dpkg --force-confold -i 1password-cli-amd64-latest.deb
+          wget https://downloads.1password.com/linux/debian/amd64/stable/$CLI_VERSION
+          sudo dpkg --force-confold -i $CLI_VERSION
           op --version
         
       - name: start op
