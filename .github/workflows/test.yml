@@ -26,4 +26,10 @@ jobs:
         run: | 
           eval $(echo "$PASSWORD" | op account add --address $ADDRESS --email $EMAIL --secret-key $SECRET_KEY --signin)
           op vault list
+
+      - name: run from script
+        run: |
+          chmod +x ./op.sh
+          ./op.sh
+        shell: bash
           
