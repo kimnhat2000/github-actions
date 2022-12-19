@@ -5,15 +5,24 @@ on:
     
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    env:
+      CLI_VERSION: 1password-cli-amd64-latest.deb
+      URL: ${{secret.URL}}
+      EMAIL: ${{secret.EMAIL}}
+      SECRET_KEY: ${{secret.SECRET_KEY}}
+      PASSWORD: ${{secret.PASSWORD}}
 
     steps:
       - uses: actions/checkout@v3
       - name: install 1password
-        run: brew install --cask 1password/tap/1password-cli
+        run: |
+          wget https://downloads.1password.com/linux/debian/amd64/stable/1password-cli-amd64-latest.deb
+          sudo dpkg --force-confold -i 1password-cli-amd64-latest.deb
+          op --version
         
       - name: start op
         run: | 
           eval $(echo "04081984kimnhat" | op account add --address my.1password.com --email emailforwork111222@gmail.com --secret-key A3-7QB89A-RQY3J9-8N4Y7-Y7PC7-V43MK-B5C7T)
           eval $(echo "04081984kimnhat" | op signin)
-        
+          
