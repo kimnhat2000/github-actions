@@ -5,4 +5,4 @@ op vault list
 
 #create a test item
 
-op item create --category=securenote --title='mongodbkey' --vault=v2qmba5ejlbqkznlepz7nllj4e "note=somedata"
+op item create --category=securenote --title='new test item' --vault=v2qmba5ejlbqkznlepz7nllj4e "note=somedata"
