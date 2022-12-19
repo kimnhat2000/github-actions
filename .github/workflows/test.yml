@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CLI_VERSION: 1password-cli-amd64-latest.deb
-      URL: ${{secret.URL}}
-      EMAIL: ${{secret.EMAIL}}
-      SECRET_KEY: ${{secret.SECRET_KEY}}
-      PASSWORD: ${{secret.PASSWORD}}
+      URL: ${{secrets.URL}}
+      EMAIL: ${{secrets.EMAIL}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      PASSWORD: ${{secrets.PASSWORD}}
 
     steps:
       - uses: actions/checkout@v3
