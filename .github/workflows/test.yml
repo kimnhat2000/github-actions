@@ -24,7 +24,6 @@ jobs:
         
       - name: run from script
         run: |
-          chmod +x ./op.sh
           ./op.sh
           echo "script run successfully"
         shell: bash
