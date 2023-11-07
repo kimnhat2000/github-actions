@@ -22,10 +22,7 @@ jobs:
           sudo dpkg --force-confold -i $CLI_VERSION
           op --version
         
-      - name: run from script
-        run: |
-          chmod +x ./op.sh
-          ./op.sh
-          echo "script run successfully"
-        shell: bash
-          
+      - name: start op
+        run: | 
+          eval $(echo "$PASSWORD" | op account add --address $ADDRESS --email $EMAIL --secret-key $SECRET_KEY --signin)
+          op vault list
