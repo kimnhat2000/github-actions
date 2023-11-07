@@ -26,3 +26,4 @@ jobs:
         run: | 
           eval $(echo "$PASSWORD" | op account add --address $ADDRESS --email $EMAIL --secret-key $SECRET_KEY --signin)
           op vault list
+          op item create --category ssh --title "github actions key" --ssh-generate-key "RSA" --vault "vznh73vmml3xake4byghvbydda"
