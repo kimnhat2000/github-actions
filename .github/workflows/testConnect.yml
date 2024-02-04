@@ -20,4 +20,4 @@ jobs:
       - uses: actions/checkout@v3 #checkout@v2 is no longer supported
       - name: Run script
         run: |
-          op read $TEST_VAR
+          op read "op://testing_2/test bs item/username"
