@@ -20,4 +20,5 @@ jobs:
       - uses: actions/checkout@v3 #checkout@v2 is no longer supported
       - name: Run script
         run: |
-          echo $(op read $TEST_VAR)
+          op vault ls
+          op read $TEST_VAR
