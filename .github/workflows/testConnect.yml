@@ -1,9 +1,4 @@
 # GitHub Actions yaml
-- name: Use Node.js 20
-  uses: actions/setup-node@v2
-  with:
-    node-version: '20'
-
 name: Build
 on: [push, pull_request]
 jobs:
@@ -14,7 +9,7 @@ jobs:
       OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
       TEST_VAR: op://Test-Vault/database-secret-test/host
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3 #checkout@v2 is no longer supported
       - name: Run script
         run: |
           op read $TEST_VAR
