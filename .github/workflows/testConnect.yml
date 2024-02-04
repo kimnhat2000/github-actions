@@ -7,10 +7,9 @@ jobs:
     env:
       OP_CONNECT_HOST: ${{ secrets.OP_CONNECT_HOST }}
       OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
-      TEST_VAR: op://Test-Vault/database-secret-test/host
+      TEST_VAR: "op://testing_2/test bs item/username"
     steps:
       - uses: actions/checkout@v3 #checkout@v2 is no longer supported
       - name: Run script
         run: |
           echo op read $TEST_VAR
-          echo $OP_CONNECT_HOST
