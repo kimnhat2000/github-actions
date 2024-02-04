@@ -1,4 +1,9 @@
 # GitHub Actions yaml
+- name: Use Node.js 20
+  uses: actions/setup-node@v2
+  with:
+    node-version: '20'
+
 name: Build
 on: [push, pull_request]
 jobs:
