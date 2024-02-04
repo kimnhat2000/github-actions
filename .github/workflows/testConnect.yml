@@ -1,0 +1,15 @@
+# GitHub Actions yaml
+name: Build
+on: [push, pull_request]
+jobs:
+  dev-build:
+    runs-on: ubuntu-latest
+    env:
+      OP_CONNECT_HOST: ${{ secrets.OP_CONNECT_HOST }}
+      OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
+      TEST_VAR: op://Test-Vault/database-secret-test/host
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run script
+        run: |
+          op read $TEST_VAR
