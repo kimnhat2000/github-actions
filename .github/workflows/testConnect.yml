@@ -7,7 +7,7 @@ jobs:
   dev-build:
     runs-on: ubuntu-latest
     env:
-      #CLI_VERSION: 1password-cli-amd64-latest.deb
+      CLI_VERSION: 1password-cli-amd64-latest.deb
       #OP_CONNECT_HOST: http://localhost:8080
       OP_CONNECT_HOST: http://24.144.69.128:8080
       OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
