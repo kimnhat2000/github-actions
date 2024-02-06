@@ -19,7 +19,7 @@ jobs:
           sudo dpkg --force-confold -i $CLI_VERSION
           op --version
         # uses: 1password/load-secrets-action@v1
-      - uses: actions/checkout@v3 #checkout@v2 is no longer supported
+      # - uses: actions/checkout@v3 #checkout@v2 is no longer supported
       - name: Run script
         run: |
           op read "op://testing_2/test bs item/username"
