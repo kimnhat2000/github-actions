@@ -13,11 +13,11 @@ jobs:
       OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
       TEST_VAR: "op://testing_2/test bs item/username"
     steps:
-      # - name: install 1password
-      #   run: |
-      #     wget https://downloads.1password.com/linux/debian/amd64/stable/$CLI_VERSION
-      #     sudo dpkg --force-confold -i $CLI_VERSION
-      #     op --version
+      - name: install 1password
+        run: |
+          wget https://downloads.1password.com/linux/debian/amd64/stable/$CLI_VERSION
+          sudo dpkg --force-confold -i $CLI_VERSION
+          op --version
       - uses: actions/checkout@v3 #checkout@v2 is no longer supported
       - name: Run script
         run: |
