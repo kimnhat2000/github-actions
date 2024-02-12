@@ -25,8 +25,6 @@ jobs:
       - name: Run script
         run: |
           export OP_SERVICE_ACCOUNT_TOKEN=$OP_SERVICE_ACCOUNT_TOKEN
-          op read $SECRET
-          echo "test done"
-
+          op read "$SECRET"
         # run: |
         #   echo $TEST_VAR
