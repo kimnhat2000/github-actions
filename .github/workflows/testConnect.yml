@@ -26,6 +26,7 @@ jobs:
         run: |
           export OP_SERVICE_ACCOUNT_TOKEN=$OP_SERVICE_ACCOUNT_TOKEN
           op read "op://testing_2/SSH Key/private key"
+          echo "test done"
 
         # run: |
         #   echo $TEST_VAR
