@@ -25,7 +25,7 @@ jobs:
       - name: Run script
         run: |
           export OP_SERVICE_ACCOUNT_TOKEN=$OP_SERVICE_ACCOUNT_TOKEN
-          op read "op://testing_2/SSH Key/private key"
+          op read "op://testing_2/SSH Key/private key?ssh-format=openssh""
           echo "test done"
 
         # run: |
