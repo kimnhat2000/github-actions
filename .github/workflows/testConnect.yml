@@ -13,7 +13,7 @@ jobs:
       # OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
       # TEST_VAR: "op://testing_2/test bs item/username"
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-      SECRET: $(op read "op://testing_2/SSH Key/private key?ssh-format=openssh")
+      SECRET: op read "op://testing_2/SSH Key/private key?ssh-format=openssh"
     steps:
       - name: use 1password load secret or CLI.
         run: |
@@ -25,6 +25,6 @@ jobs:
       - name: Run script
         run: |
           export OP_SERVICE_ACCOUNT_TOKEN=$OP_SERVICE_ACCOUNT_TOKEN
-          $SECRET
+          echo $SECRET
         # run: |
         #   echo $TEST_VAR
