@@ -26,7 +26,7 @@ jobs:
         run: |
           export OP_SERVICE_ACCOUNT_TOKEN=$OP_SERVICE_ACCOUNT_TOKEN
           export ANOTHERENV=123
-          eport NEWENV=$(op read "$SECRET" | tr -d '\n')
+          export NEWENV=$(op read "$SECRET" | tr -d '\n')
           echo $NEWENV
         # run: |
         #   echo $TEST_VAR
