@@ -27,11 +27,11 @@ jobs:
           export OP_SERVICE_ACCOUNT_TOKEN=$OP_SERVICE_ACCOUNT_TOKEN
           export ANOTHERENV=123
           export NEWENV=$(op read "$SECRET" | tr -d '\n')
-          echo "NEWENV=$NEWENV" >> $GITHUB_ENV
-          echo "ANOTHERENV=$ANOTHERENV" >> $GITHUB_ENV
+          echo "::set-env name=NEWENV::$NEWENV"
+          echo "::set-env name=ANOTHERENV::$ANOTHERENV"
         # run: |
         #   echo $TEST_VAR
       - name: get secret
         run: |
-          echo "NEWENV=$NEWENV" >> $GITHUB_ENV
-          echo "ANOTHERENV=$ANOTHERENV" >> $GITHUB_ENV
+          echo $NEWENV
+          echo $ANOTHERENV
