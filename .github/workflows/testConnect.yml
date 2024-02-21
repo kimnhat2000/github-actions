@@ -27,11 +27,12 @@ jobs:
           export OP_SERVICE_ACCOUNT_TOKEN=$OP_SERVICE_ACCOUNT_TOKEN
           export ANOTHERENV=123
           export NEWENV=$(op read "$SECRET" | tr -d '\n')
+          echo "::set-output name=ANOTHERENV::$ANOTHERENV"
+          echo "::set-output name=NEWENV::$NEWENV"
           echo $NEWENV
         # run: |
         #   echo $TEST_VAR
       - name: get secret
         run: |
-          echo $NEWENV
-          echo $ANOTHERENV
-          echo secret printed
+          echo ${{ steps.run_script.outputs.NEWENV }}
+          echo ${{ steps.run_script.outputs.ANOTHERENV }}
