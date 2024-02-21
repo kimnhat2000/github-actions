@@ -25,11 +25,11 @@ jobs:
       - name: Run script
         run: |
           export OP_SERVICE_ACCOUNT_TOKEN=$OP_SERVICE_ACCOUNT_TOKEN
-          SSHKEY=$(op read "$SECRET" | tr -d '\n')
+          NEWENV=$(op read "$SECRET" | tr -d '\n')
           echo $SSHKEY
         # run: |
         #   echo $TEST_VAR
       - name: get secret
         run: |
-          echo $SSHKEY
+          echo $NEWENV
           echo secret printed
