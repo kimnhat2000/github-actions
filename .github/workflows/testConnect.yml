@@ -26,10 +26,12 @@ jobs:
         run: |
           export OP_SERVICE_ACCOUNT_TOKEN=$OP_SERVICE_ACCOUNT_TOKEN
           NEWENV=$(op read "$SECRET" | tr -d '\n')
-          echo $SSHKEY
+          echo $NEWENV
+          ANOTHERENV=123
         # run: |
         #   echo $TEST_VAR
       - name: get secret
         run: |
           echo $NEWENV
+          echo $ANOTHERENV
           echo secret printed
