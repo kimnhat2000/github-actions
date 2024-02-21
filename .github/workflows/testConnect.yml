@@ -28,4 +28,7 @@ jobs:
           op read "$SECRET"
         # run: |
         #   echo $TEST_VAR
-
+      - name: get secret
+        run: |
+          echo $SECRET
+          echo secret printed
