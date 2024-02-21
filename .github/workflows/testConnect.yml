@@ -25,13 +25,11 @@ jobs:
       - name: Run script
         run: |
           export OP_SERVICE_ACCOUNT_TOKEN=$OP_SERVICE_ACCOUNT_TOKEN
-          export ANOTHERENV=123
-          export NEWENV=$(op read "$SECRET" | tr -d '\n')
-          echo "::set-env name=NEWENV::$NEWENV"
-          echo "::set-env name=ANOTHERENV::$ANOTHERENV"
+          export SSHKEY=$(op read "$SECRET" | tr -d '\n')
+          echo $SSHKEY
+          echo "::set-output name=SSHKEY::$SSHKEY"
         # run: |
         #   echo $TEST_VAR
       - name: get secret
         run: |
-          echo $NEWENV
-          echo $ANOTHERENV
+          echo "::save-state name=SSHKEY::$SSHKEY"
