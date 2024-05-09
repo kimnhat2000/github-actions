@@ -32,3 +32,4 @@ jobs:
       - name: get secret
         run: |
           cat ssh.txt
+          rm ssh.txt
