@@ -8,12 +8,21 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CLI_VERSION: 1password-cli-amd64-latest.deb
+      ### Connect
       #OP_CONNECT_HOST: http://localhost:8080
       # OP_CONNECT_HOST: http://24.144.69.128:8080
       # OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
       # TEST_VAR: "op://testing_2/test bs item/username"
-      OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-      SECRET: "op://testing_2/SSH Key/private key?ssh-format=openssh"
+      ### Service Account
+      # OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+      ### CLI
+      URL: ${{secrets.URL}}
+      EMAIL: ${{secrets.EMAIL}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      PASSWORD: ${{secrets.PASSWORD}}
+      ADDRESS: my.b5test.com
+
+      # SECRET: "op://testing_2/SSH Key/private key?ssh-format=openssh"
     steps:
       - name: use 1password load secret or CLI.
         run: |
@@ -22,14 +31,17 @@ jobs:
           op --version
         # uses: 1password/load-secrets-action@v1
       - uses: actions/checkout@v3 #checkout@v2 is no longer supported
-      - name: Run script
-        run: |
-          export OP_SERVICE_ACCOUNT_TOKEN=$OP_SERVICE_ACCOUNT_TOKEN
-          SSHKEY=$(op read "$SECRET" | tr -d '\n')
-          echo $SSHKEY > ssh.txt
-        # run: |
-        #   echo $TEST_VAR
-      - name: get secret
-        run: |
-          cat ssh.txt
-          rm ssh.txt
+      # - name: Run script
+      #   run: |
+      #     export OP_SERVICE_ACCOUNT_TOKEN=$OP_SERVICE_ACCOUNT_TOKEN
+      #     SSHKEY=$(op read "$SECRET" | tr -d '\n')
+      #     echo $SSHKEY > ssh.txt
+      # - name: get secret
+      #   run: |
+      #     cat ssh.txt
+      #     rm ssh.txt
+      
+      - name: get vault ls with CLI
+        run: | 
+          eval $(echo "$PASSWORD" | op account add --address $ADDRESS --email $EMAIL --secret-key $SECRET_KEY --signin)
+          op vault list
