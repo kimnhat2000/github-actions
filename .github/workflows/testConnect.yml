@@ -45,3 +45,7 @@ jobs:
         run: | 
           eval $(echo "$PASSWORD" | op account add --address $ADDRESS --email $EMAIL --secret-key $SECRET_KEY --signin)
           op vault list
+
+      - name: Generate 2FA Code
+        run: |
+          echo e5qtxna7tkehtpem4fye7h4p2ivychkj | oathtool --totp -
