@@ -17,5 +17,5 @@ jobs:
 
       - name: Print masked secret
         run: 'echo "Username: $USERNAME"
-              echo "Password: $USERNAME'
+              echo "Password: $USERNAME"'
         # Prints: Secret: ***
