@@ -12,8 +12,8 @@ jobs:
         env:
           OP_CONNECT_HOST: http://159.203.49.65:8080
           OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
-          USERNAME: "op://4znpwcqkyydycs7wvm7kg3a3ri/test login item/username"
-          PASSWORD: "op://4znpwcqkyydycs7wvm7kg3a3ri/test login item/password"
+          USERNAME: "op://vznh73vmml3xake4byghvbydda/bs test item/username"
+          PASSWORD: "op://vznh73vmml3xake4byghvbydda/bs test item/password"
 
       - name: Print masked secret
         run: 'echo "test Username: $USERNAME"
