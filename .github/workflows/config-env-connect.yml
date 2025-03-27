@@ -16,6 +16,6 @@ jobs:
           PASSWORD: "op://vznh73vmml3xake4byghvbydda/bs test item/password"
 
       - name: Print masked secret
-        run: 'echo "Username: $USERNAME"
+        run: 'echo "test Username: $USERNAME"
               echo "Password: $USERNAME"'
         # Prints: Secret: ***
