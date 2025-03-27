@@ -1,0 +1,21 @@
+on: push
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Load secret
+        uses: 1password/load-secrets-action@v2
+        with:
+          export-env: true
+        env:
+          OP_CONNECT_HOST: http://159.203.49.65:8080
+          OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
+          USERNAME: "op://4znpwcqkyydycs7wvm7kg3a3ri/test login item/username"
+          PASSWORD: "op://4znpwcqkyydycs7wvm7kg3a3ri/test login item/password"
+
+      - name: Print masked secret
+        run: 'echo "test Username: $USERNAME"
+              echo "Password: $USERNAME"'
+        # Prints: Secret: ***
