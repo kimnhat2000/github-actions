@@ -4,7 +4,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - name: Load secret
         # id: op-load-secret
         uses: 1password/load-secrets-action@v2

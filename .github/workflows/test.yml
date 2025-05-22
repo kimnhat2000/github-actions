@@ -1,0 +1,13 @@
+on: push
+jobs:
+  install-1pw-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: download CLI
+        run: node github-actions/test.js
+      
+      - name: check "op"
+        run: echo $(op --version)
+
+
