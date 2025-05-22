@@ -10,11 +10,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install 1Password CLI
-        run: |
-          curl -sS https://downloads.1password.com/linux/debian/amd64/stable/1password-cli.deb -o op.deb
-          sudo dpkg -i op.deb
-          op --version
+      # - name: Install 1Password CLI
+      #   run: |
+      #     curl -sS https://downloads.1password.com/linux/1password-cli.sh | sh
+      #     echo "$HOME/.1password" >> $GITHUB_PATH
+      #     op --version
 
       - name: Run test.js
         run: node github-actions/test.js
