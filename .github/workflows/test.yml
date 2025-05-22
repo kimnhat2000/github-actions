@@ -19,4 +19,7 @@ jobs:
       - name: test js file
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-        run: op vault ls
+        run: |
+          op vault ls
+          op item ls --vault "mfsqhaf3zntu2mgjzaqpdedkba"
+
