@@ -12,8 +12,8 @@ jobs:
           export-env: false
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          USERNAME: "op://4znpwcqkyydycs7wvm7kg3a3ri/test login item/username"
-          PASSWORD: "op://4znpwcqkyydycs7wvm7kg3a3ri/test login item/password"
+          USERNAME: "op://mfsqhaf3zntu2mgjzaqpdedkba/2iivkygxm7ththmd5k4xcaxhke/username"
+          PASSWORD: "op://mfsqhaf3zntu2mgjzaqpdedkba/2iivkygxm7ththmd5k4xcaxhke/password"
 
       - name: Print masked secret
         run: 'echo "USERNAME: ${{ steps.op-load-secret.outputs.USERNAME }}"
