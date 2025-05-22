@@ -17,7 +17,8 @@ jobs:
 
       - name: Print masked secret
         run: 'echo "USERNAME: ${{ steps.op-load-secret.outputs.USERNAME }}"
-              echo "PASSWORD: ${{ steps.op-load-secret.outputs.PASSWORD }}"'
+              echo "PASSWORD: ${{ steps.op-load-secret.outputs.PASSWORD }}"
+              echo "push'
         # Prints: Secret: ***
 
 
