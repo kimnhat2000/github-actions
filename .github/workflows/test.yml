@@ -10,11 +10,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # - name: Install 1Password CLI
-      #   run: |
-      #     curl -sS https://downloads.1password.com/linux/1password-cli.sh | sh
-      #     echo "$HOME/.1password" >> $GITHUB_PATH
-      #     op --version
-
-      - name: Run test.js
+      - name: Run test.js to install 1Password CLI
         run: node test.js
+
+      - name: Check "op --version"
+        run: echo $(op --version)
