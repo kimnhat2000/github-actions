@@ -11,10 +11,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run test.js to install 1Password CLI
-        run: node test.js
-
-      - name: Check "op --version"
-        run: echo $(op --version)
+        run: |
+          node test.js
+          echo $(op --version)
       
       - name: test js file
         env:
