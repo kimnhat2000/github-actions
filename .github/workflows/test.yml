@@ -15,3 +15,8 @@ jobs:
 
       - name: Check "op --version"
         run: echo $(op --version)
+      
+      - name: test js file
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+        run: op vault ls

@@ -1,5 +1,7 @@
 import { exec } from 'child_process';
 
+const token = process.env.OP_SERVICE_ACCOUNT_TOKEN;
+
 const installCmd = `
 curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg &&
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" | sudo tee /etc/apt/sources.list.d/1password.list &&
@@ -11,11 +13,7 @@ sudo apt update &&
 sudo apt install -y 1password-cli
 `;
 
-exec(installCmd, (error, stdout, stderr) => {
-  if (error) {
-    console.error(`Install error: ${error.message}`);
-    return;
-  }
-  console.log(`stdout: ${stdout}`);
-  if (stderr) console.error(`stderr: ${stderr}`);
-});
+const exportToken = `OP_SERVICE_ACCOUNT_TOKEN=token`
+
+exec(installCmd);
+exec(exportToken);
