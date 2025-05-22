@@ -16,9 +16,8 @@ jobs:
           PASSWORD: "op://mfsqhaf3zntu2mgjzaqpdedkba/2iivkygxm7ththmd5k4xcaxhke/password"
 
       - name: Print masked secret
-        run: 'echo "USERNAME: ${{ steps.op-load-secret.outputs.USERNAME }}"
-              echo "PASSWORD: ${{ steps.op-load-secret.outputs.PASSWORD }}"
-              echo "push'
+        run: 'echo "test Username: $USERNAME"
+              echo "Password: $USERNAME"'
         # Prints: Secret: ***
 
 
