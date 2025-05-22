@@ -1,13 +1,20 @@
+name: Test 1Password CLI Installation
+
 on: push
+
 jobs:
   install-1pw-cli:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - name: download CLI
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install 1Password CLI
+        run: |
+          curl -sS https://downloads.1password.com/linux/debian/amd64/stable/1password-cli.deb -o op.deb
+          sudo dpkg -i op.deb
+          op --version
+
+      - name: Run test.js
         run: node github-actions/test.js
-      
-      - name: check "op"
-        run: echo $(op --version)
-
-
