@@ -17,4 +17,4 @@ jobs:
       #     op --version
 
       - name: Run test.js
-        run: node github-actions/test.js
+        run: node test.js
