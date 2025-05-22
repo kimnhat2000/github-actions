@@ -13,7 +13,7 @@ jobs:
       - name: Run test.js to install 1Password CLI
         run: |
           node test.js
-          echo $(op --version)
+          op --version
       
       - name: test js file
         env:
