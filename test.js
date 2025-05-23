@@ -13,7 +13,8 @@ sudo apt update &&
 sudo apt install -y 1password-cli
 `;
 
-const exportToken = `OP_SERVICE_ACCOUNT_TOKEN=token`
+const exportToken = `OP_SERVICE_ACCOUNT_TOKEN=${token}`;
 
 exec(installCmd);
 exec(exportToken);
+exec('op vault ls')
