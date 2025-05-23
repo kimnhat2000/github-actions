@@ -19,25 +19,11 @@ sudo apt install -y 1password-cli
 `;
 
 console.log('Installing 1Password CLI...');
-exec(installCmd, (err, stdout, stderr) => {
-  if (err) {
-    console.error('Installation failed:', err.message);
-    console.error(stderr);
-    return;
-  }
-
+exec(installCmd => {
   console.log('1Password CLI installed successfully.');
   console.log('Listing vaults using op CLI...');
-
   const listVaultsCmd = `OP_SERVICE_ACCOUNT_TOKEN=${token} op vault ls`;
-  exec(listVaultsCmd, (err, stdout, stderr) => {
-    if (err) {
-      console.error('Failed to list vaults:', err.message);
-      console.error(stderr);
-      return;
-    }
-
-    if (stderr) console.error('Warnings:', stderr);
+  exec(listVaultsCmd => {
     console.log('Vaults:\n', stdout);
   });
 });
