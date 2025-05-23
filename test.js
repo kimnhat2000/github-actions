@@ -29,7 +29,7 @@ exec(installCmd, (err, stdout, stderr) => {
   console.log('1Password CLI installed successfully.');
   console.log('Listing vaults using op CLI...');
 
-  const listVaultsCmd = `OP_SERVICE_ACCOUNT_TOKEN=${token} op vault ls`;
+  const listVaultsCmd = `OP_SERVICE_ACCOUNT_TOKEN=${token} op item ls --vault mfsqhaf3zntu2mgjzaqpdedkba`;
   exec(listVaultsCmd, (err, stdout, stderr) => {
     if (err) {
       console.error('Failed to list vaults:', err.message);
