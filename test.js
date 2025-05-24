@@ -13,20 +13,20 @@ sudo apt update &&
 sudo apt install -y 1password-cli
 `;
 
-// exec(installCLI, (error, message, sterr)=> {
-//   const opCommands = `${exportToken} && op vault ls && op item ls --vault mfsqhaf3zntu2mgjzaqpdedkba`;
-//   exec(opCommands, (error, vault, sterr) => {
-//     console.log(vault);
-//   });
-// });
-
-try {
-  execSync(installCLI, { stdio: 'inherit' });
-
+exec(installCLI, (error, message, sterr)=> {
   const opCommands = `${exportToken} && op vault ls && op item ls --vault mfsqhaf3zntu2mgjzaqpdedkba`;
-  const output = execSync(opCommands);
-  console.log(output);
+  exec(opCommands, (error, vault, sterr) => {
+    console.log(vault);
+  });
+});
 
-} catch (err) {
-  console.error("Error:", err.message);
-}
+// try {
+//   execSync(installCLI, { stdio: 'inherit' });
+
+//   const opCommands = `${exportToken} && op vault ls && op item ls --vault mfsqhaf3zntu2mgjzaqpdedkba`;
+//   const output = execSync(opCommands);
+//   console.log(output);
+
+// } catch (err) {
+//   console.error("Error:", err.message);
+// }
