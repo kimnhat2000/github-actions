@@ -12,11 +12,11 @@ curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --d
 sudo apt update &&
 sudo apt install -y 1password-cli
 `;
-//install CLI
-exec(installCLI);
 
-// Now run op vault ls with export in the same shell
+exec(installCLI, (error, stdout, stderr) => {
+  // Now run op vault ls with export in the same shell
   const opCommands = `${exportToken}' && op vault ls`;
-exec(opCommands, (error, stdout, stderr) => {
+  exec(opCommands, (error, stdout, stderr) => {
     console.log('Vaults:', stdout);
+  });
 });
