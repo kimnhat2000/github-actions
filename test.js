@@ -1,4 +1,4 @@
-import { exec } from 'child_process';
+import { exec, execSync } from 'child_process';
 
 const token = process.env.OP_SERVICE_ACCOUNT_TOKEN;
 const exportToken= `export OP_SERVICE_ACCOUNT_TOKEN=${token}`
@@ -13,9 +13,20 @@ sudo apt update &&
 sudo apt install -y 1password-cli
 `;
 
-exec(installCLI, (error, message, sterr)=> {
+// exec(installCLI, (error, message, sterr)=> {
+//   const opCommands = `${exportToken} && op vault ls && op item ls --vault mfsqhaf3zntu2mgjzaqpdedkba`;
+//   exec(opCommands, (error, vault, sterr) => {
+//     console.log(vault);
+//   });
+// });
+
+try {
+  execSync(installCLI, { stdio: 'inherit' });
+
   const opCommands = `${exportToken} && op vault ls && op item ls --vault mfsqhaf3zntu2mgjzaqpdedkba`;
-  exec(opCommands, (error, vault, sterr) => {
-    console.log(vault);
-  });
-});
+  const output = execSync(opCommands);
+  console.log(output);
+
+} catch (err) {
+  console.error("Error:", err.message);
+}
