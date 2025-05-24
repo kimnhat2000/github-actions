@@ -2,7 +2,7 @@ import { exec } from 'child_process';
 
 const token = process.env.OP_SERVICE_ACCOUNT_TOKEN;
 const exportToken= `export OP_SERVICE_ACCOUNT_TOKEN=${token}`
-const installCmd = `
+const installCLI = `
 curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg &&
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" | sudo tee /etc/apt/sources.list.d/1password.list &&
 sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/ &&
@@ -13,5 +13,10 @@ sudo apt update &&
 sudo apt install -y 1password-cli
 `;
 
-exec(installCmd)
-exec(`${exportToken} && op vault ls`);
+exec(cmd, (error, stdout, stderr) => {
+  // Now run op vault ls with export in the same shell
+  const opCommands = `${exportToken}' && op vault ls`;
+  exec(opCommands, (error, stdout, stderr) => {
+    console.log('Vaults:', stdout);
+  });
+});
