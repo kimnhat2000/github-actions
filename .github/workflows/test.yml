@@ -23,4 +23,5 @@ jobs:
         run: |
           op vault ls
           op item ls --vault "mfsqhaf3zntu2mgjzaqpdedkba"
+          op item share 2iivkygxm7ththmd5k4xcaxhke --vault mfsqhaf3zntu2mgjzaqpdedkba --emails nhat.nguyen+testemail@agilebits.com
 
