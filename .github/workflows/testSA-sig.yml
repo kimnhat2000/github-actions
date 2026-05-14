@@ -1,0 +1,18 @@
+on: push
+
+jobs:
+  my-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Load secret
+        id: load_secrets
+        uses: 1password/load-secrets-action@45742be95e0cdb426979ec1aceccb792edf30356
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+          SECRET: "op://Service Account/test/username"
+
+      - name: Print masked secret
+        run: |
+          echo "Secret: ${{ steps.load_secrets.outputs.SECRET }}"
