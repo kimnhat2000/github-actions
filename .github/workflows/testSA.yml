@@ -1,6 +1,7 @@
 on: push
+
 jobs:
-  hello-world:
+  my-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -10,9 +11,7 @@ jobs:
         uses: 1password/load-secrets-action@v4
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          SECRET: op://app-cicd/hello-world/secret
-          OP_ENV_FILE: "./path/to/.env.tpl" # see tests/.env.tpl for example
+          SECRET: "op://Service Account/test/username"
 
       - name: Print masked secret
-        run: 'echo "Secret: ${{ steps.load_secrets.outputs.SECRET }}"'
-        # Prints: Secret: ***
+        run: echo "Secret: ${{ steps.load_secrets.outputs.SECRET }}"
