@@ -9,8 +9,8 @@ jobs:
         uses: 1password/load-secrets-action@v4
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          USERNAME: "op://mfsqhaf3zntu2mgjzaqpdedkba/2iivkygxm7ththmd5k4xcaxhke/username"
-          PASSWORD: "op://mfsqhaf3zntu2mgjzaqpdedkba/2iivkygxm7ththmd5k4xcaxhke/password"
+          USERNAME: "op://27zyxzp3gpeu76eqe2d5cdqhd4/4veqw6ua4pyri5syov7qn7dqla/username"
+          PASSWORD: "op://Service Account/test/password"
 
       - name: Print masked secret
         run: 'echo "test Username: $USERNAME"
