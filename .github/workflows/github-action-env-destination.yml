@@ -13,22 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Show GitHub context
-        run: |
-          echo "Workflow: ${{ github.workflow }}"
-          echo "Repository: ${{ github.repository }}"
-          echo "Ref: ${{ github.ref }}"
-          echo "Workflow Ref: ${{ github.workflow_ref }}"
-
       - name: Load secrets from 1Password
         uses: 1Password/load-secrets-action@v5beta
         env:
           OP_WORKLOAD_ID: "UFDGO7HTQ5A4TOTSUVPZ7F3VVM"
           OP_ENVIRONMENT_ID: "zaunjvlsva6tlpk7xbrseefyte"
           OP_INTEGRATION_KEY: ${{ secrets.OP_INTEGRATION_KEY }}
-
-          USERNAME: "op://27zyxzp3gpeu76eqe2d5cdqhd4/4veqw6ua4pyri5syov7qn7dqla/username"
-          PASSWORD: "op://Service Account/test/password"
 
       - name: Print masked secret
         run: |
