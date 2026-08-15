@@ -1,7 +1,7 @@
 on: push
 
 jobs:
- hello-world:
+ my-test:
     runs-on: ubuntu-latest
 
     steps:
