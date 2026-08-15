@@ -14,10 +14,7 @@ jobs:
           OP_ENVIRONMENT_ID: "zaunjvlsva6tlpk7xbrseefyte"
           OP_INTEGRATION_KEY: ${{ secrets.OP_INTEGRATION_KEY }}
 
-          USERNAME: "op://27zyxzp3gpeu76eqe2d5cdqhd4/4veqw6ua4pyri5syov7qn7dqla/username"
-          PASSWORD: "op://Service Account/test/password"
-
       - name: Print masked secret
         run: |
-          echo "Username: $USERNAME"
-          echo "Password: $PASSWORD"
+          echo "Username"
+          echo "Password"
