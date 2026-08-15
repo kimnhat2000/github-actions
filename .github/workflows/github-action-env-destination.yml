@@ -1,7 +1,11 @@
 on: push
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
- my-test:
+  my-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,7 +18,10 @@ jobs:
           OP_ENVIRONMENT_ID: "zaunjvlsva6tlpk7xbrseefyte"
           OP_INTEGRATION_KEY: ${{ secrets.OP_INTEGRATION_KEY }}
 
+          USERNAME: "op://27zyxzp3gpeu76eqe2d5cdqhd4/4veqw6ua4pyri5syov7qn7dqla/username"
+          PASSWORD: "op://Service Account/test/password"
+
       - name: Print masked secret
         run: |
-          echo "Username"
-          echo "Password"
+          echo "Username: $USERNAME"
+          echo "Password: $PASSWORD"
